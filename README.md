@@ -70,6 +70,6 @@ The goal of this project is to compare the performance of different sorting algo
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/AndreasAvgou/sorting-algorithms-comparison.git
+   git clone https://github.com/AndreasAvgou/Sorting-Algorithm-Performance-Comparison.git
    cd sorting-algorithms-comparison
 
