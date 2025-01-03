@@ -73,3 +73,58 @@ The goal of this project is to compare the performance of different sorting algo
    git clone https://github.com/AndreasAvgou/Sorting-Algorithm-Performance-Comparison.git
    cd sorting-algorithms-comparison
 
+2. **Build and Start the Containers**
+
+   To build and run the containers for the application, run the following command:
+
+   ```bash
+   docker-compose up --build
+
+3. **Access pgAdmin4**
+
+- Open a browser and navigate to [http://localhost:5050](http://localhost:5050).
+- Login with the credentials provided in the `docker-compose.yml` file.
+
+### Check Database
+
+Once logged into pgAdmin4, connect to the `sorting_db` and inspect the `sorting_results` table to view benchmark results.
+
+## Running the Application
+
+The application automatically runs `main.py` when the Docker container starts. The script generates a random array, benchmarks various sorting algorithms, and stores the results in the PostgreSQL database.
+
+### Manually Run the Application
+
+If you want to run the application manually inside the container, use the following command:
+
+  
+    docker exec -it sorting_app python main.py
+
+## Database Schema
+
+The PostgreSQL database contains the following schema for storing benchmark results:
+
+    
+    CREATE TABLE sorting_results
+    (
+    id SERIAL PRIMARY KEY,
+    algorithm_name VARCHAR(50),
+    array_size INTEGER,
+    execution_time FLOAT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
+
+- **id**: A unique identifier for each entry.
+- **algorithm_name**: The name of the sorting algorithm used (e.g., "Bubble Sort").
+- **array_size**: The size of the array sorted.
+- **execution_time**: The time taken to sort the array.
+- **created_at**: Timestamp when the result was recorded.
+
+## Future Improvements
+
+- Add more sorting algorithms (e.g., Tim Sort, Shell Sort).
+- Integrate with **Power BI** or other visualization tools to provide real-time or graphical insights into sorting performance.
+- Implement **multi-threading** to speed up performance in the benchmarking process.
+- Support additional database options (e.g., MySQL, SQLite) for storing results.
+
